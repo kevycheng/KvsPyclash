@@ -1,0 +1,2 @@
+﻿clan_name_list = [u"寵物村", u"Hold The Door", u"聽媽媽的話", u"一戰止殤", u"DREAM HUNTER", u"島嶼天光", u"白金趴", u"Power藍白拖", u"for fun", u"A team plus"]
+clan_id_list = ["8VY0CPUR", "QUPRQGRP", "2C2V2J0L", "QRCRJQUY", "8RCVUJ8U", "9CLQ9P8R", "99GPGCLQ", "YGGJVCP2", "U9YQ9OP", "LCGPR0J8"]
