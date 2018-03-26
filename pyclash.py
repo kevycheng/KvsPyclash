@@ -140,6 +140,43 @@ def getmemberbyid(memberid):
     
     return member_content
 
+def pyclan():
+    pass
+
+def collectmemberbyclanid(clan_id, clan_name):
+    
+    clan_member = []
+    
+    clan_page = 'https://www.clashofstats.com/clans/' + clan_id + '/members'
+
+    print(clan_name)
+    print(clan_page)
+
+    res = requests.get(clan_page)
+    soup = BeautifulSoup(res.text,'lxml')
+    table = soup.find_all('table')
+
+    dfs = pd.read_html(res.text)
+    df = dfs[0]
+    #df
+
+    members = df.iloc[0:50, 3]
+    print("member count: " + str(len(members)))
+
+    for i in range(0,len(members)):
+        #print('=======')
+        id1 = members[i].split('#')
+        name = id1[0].split('access_time')[0]
+    
+        length = len(id1)
+        possibleid = id1[length-1]
+        realid = possibleid.split('Member')[0].split('Elder')[0].split('Co-Leader')[0].split('Leader')[0]
+        #print(name)
+        #print(realid)
+        clan_member.append(realid)
+
+    return clan_member
+
 def pymember():
 
     clan_id_list = []
@@ -163,43 +200,55 @@ def pymember():
 
     anw = raw_input ("Enter Your Choice [A/B/C/D...]? : ")
 
+    clan_member = []
+
     # convert char to int
     sel = ord(anw.lower()) - ord('a')
-    clan_id = clan_id_list[sel]
-    clan_name = clan_name_list[sel]
+    if(sel < len(clan_id_list)):
+        clan_id = clan_id_list[sel]
+        clan_name = clan_name_list[sel]
+        clan_member = collectmemberbyclanid(clan_id, clan_name)
+    else:
+        print("out of range, collect all")
+        members = []
+        for i in range(0, len(clan_id_list)):
+            clan_id = "00000000"
+            clan_name = "All"
+            members = collectmemberbyclanid(clan_id_list[i], clan_name_list[i])
+            clan_member.extend(members)
 
     # hard code testing
     #clan_id = 'QUPRQGRP'
 
-    clan_page = 'https://www.clashofstats.com/clans/' + clan_id + '/members'
+#    clan_page = 'https://www.clashofstats.com/clans/' + clan_id + '/members'
 
-    print(clan_name)
-    print(clan_page)
+#    print(clan_name)
+#    print(clan_page)
 
-    res = requests.get(clan_page)
-    soup = BeautifulSoup(res.text,'lxml')
-    table = soup.find_all('table')
+#    res = requests.get(clan_page)
+#    soup = BeautifulSoup(res.text,'lxml')
+#    table = soup.find_all('table')
 
-    dfs = pd.read_html(res.text)
-    df = dfs[0]
-    #df
+#    dfs = pd.read_html(res.text)
+#    df = dfs[0]
+#    #df
 
-    members = df.iloc[0:50, 3]
-    print("member count: " + str(len(members)))
+#    members = df.iloc[0:50, 3]
+#    print("member count: " + str(len(members)))
 
-    clan_member = []
+#    clan_member = []
       
-    for i in range(0,len(members)):
-        #print('=======')
-        id1 = members[i].split('#')
-        name = id1[0].split('access_time')[0]
-    
-        length = len(id1)
-        possibleid = id1[length-1]
-        realid = possibleid.split('Member')[0].split('Elder')[0].split('Co-Leader')[0].split('Leader')[0]
-        #print(name)
-        #print(realid)
-        clan_member.append(realid)
+#    for i in range(0,len(members)):
+#        #print('=======')
+#        id1 = members[i].split('#')
+#        name = id1[0].split('access_time')[0]
+#    
+#        length = len(id1)
+#        possibleid = id1[length-1]
+#        realid = possibleid.split('Member')[0].split('Elder')[0].split('Co-Leader')[0].split('Leader')[0]
+#        #print(name)
+#        #print(realid)
+#        clan_member.append(realid)
     
     print('[start]')
      
@@ -215,14 +264,19 @@ def pymember():
         #print(clan_member[i])
         realid = clan_member[i]
 
+        nParsingCount = 0;
+
         #use while loop to prevent request error
         while True:
             print("parsing...")
             membercontent = getmemberbyid(realid)
+            nParsingCount = nParsingCount+1    
             if(membercontent[0]!='None'):
                 #print(membercontent)
                 memberdf = pd.DataFrame(np.array(membercontent).reshape(1,5), columns = ['Name', 'TH','Queen', 'King', 'Warden'])
                 print memberdf
+                break
+            if(nParsingCount > 10):
                 break
             
         idlist.append(realid)
