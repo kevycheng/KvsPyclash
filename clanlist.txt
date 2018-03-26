@@ -1,2 +1,2 @@
-﻿clan_name_list = [u"寵物村", u"Hold The Door", u"聽媽媽的話", u"一戰止殤", u"DREAM HUNTER", u"島嶼天光", u"白金趴", u"Power藍白拖", u"for fun", u"A team plus"]
-clan_id_list = ["8VY0CPUR", "QUPRQGRP", "2C2V2J0L", "QRCRJQUY", "8RCVUJ8U", "9CLQ9P8R", "99GPGCLQ", "YGGJVCP2", "U9YQ9OP", "LCGPR0J8"]
+﻿clan_name_list = [u"寵物村", u"Hold The Door", u"聽媽媽的話", u"一戰止殤", u"DREAM HUNTER", u"島嶼天光", u"白金趴", u"Power藍白拖", u"for fun", u"A team plus", u"悠活天堂", u"說好的三星呢", u"雷門", u"十面埋伏", u"逆轉勝II", u"臺灣gogogo(2-1)", u"紅高棉", u"梅杜莎之吻", u"土匪大神與他的快樂夥伴們", u"play啥米game", u"hannstar"]
+clan_id_list = ["8VY0CPUR", "QUPRQGRP", "2C2V2J0L", "QRCRJQUY", "8RCVUJ8U", "9CLQ9P8R", "99GPGCLQ", "YGGJVCP2", "U9YQ9OP", "LCGPR0J8", "UGUUGJJ", "9CLVJGGC", "QYU2YVR2", "RYUJVGVU", "98PUCLJJ", "GQYQGCC", "YY2R08R9", "QQPR9228", "LVP0CCQ", "9QGJCU2U", "R22PCJ9"]
