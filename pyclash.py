@@ -107,31 +107,37 @@ def getmemberbyid(memberid):
         member_content.append("None")
     
     queenlevel = 0
-    hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 50, Max: 50)"})
+    hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 60, Max: 60)"})
     if(len(hero_levels)==0):
-        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 40, Max: 50)"})
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 50, Max: 60)"})
     if(len(hero_levels)==0):
-        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 30, Max: 50)"})
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 40, Max: 60)"})
+    if(len(hero_levels)==0):
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Archer Queen (Max for TH: 30, Max: 60)"})
 
     if(len(hero_levels)>0):
         member_content.append(hero_levels[0].text)
     else:
         member_content.append("0")
 
-    hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 50, Max: 50)"})
+    hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 60, Max: 60)"})
     if(len(hero_levels)==0):
-        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 40, Max: 50)"})
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 50, Max: 60)"})
     if(len(hero_levels)==0):
-        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 30, Max: 50)"})
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 40, Max: 60)"})
     if(len(hero_levels)==0):
-        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 10, Max: 50)"})
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 30, Max: 60)"})
+    if(len(hero_levels)==0):
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Barbarian King (Max for TH: 10, Max: 60)"})
 
     if(len(hero_levels)>0):
         member_content.append(hero_levels[0].text)
     else:
         member_content.append('0')
 
-    hero_levels = soup_person.find_all(attrs={"data-tooltip": "Grand Warden (Max for TH: 20, Max: 20)"})
+    hero_levels = soup_person.find_all(attrs={"data-tooltip": "Grand Warden (Max for TH: 30, Max: 30)"})
+    if(len(hero_levels)==0):
+        hero_levels = soup_person.find_all(attrs={"data-tooltip": "Grand Warden (Max for TH: 20, Max: 30)"})
 
     if(len(hero_levels)>0):
         member_content.append(hero_levels[0].text)
